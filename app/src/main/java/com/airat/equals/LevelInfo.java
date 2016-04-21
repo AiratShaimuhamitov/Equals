@@ -62,7 +62,7 @@ public class LevelInfo extends AppCompatActivity {
 
 
     private void NextLevel() {
-        Intent intent = new Intent(this, StartGame.class);
+        Intent intent = new Intent(this, Game.class);
         startActivity(intent);
         overridePendingTransition(R.anim.right_out, R.anim.left_out);
         GameInfo.levelAdd();

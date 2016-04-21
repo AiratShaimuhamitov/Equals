@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".StartGame"
+    tools:context=".Game"
     android:baselineAligned="false"
     android:focusable="false"
     android:focusableInTouchMode="false"

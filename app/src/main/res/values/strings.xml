@@ -7,7 +7,7 @@
     <string name="new_game">New Game</string>
     <string name="level">Level </string>
     <string name="Equal">Equal</string>
-    <string name="uRec">You record: </string>
+    <string name="uRec">You record:    </string>
     <string name="DeveloperContacts">Equal v1.03\nDeveloper - Airat Shaimuhamitov\nContacts: shaimuhamitov@gmail.com</string>
     <string name="zero_text">0</string>
 </resources>

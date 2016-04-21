@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
-import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.*;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 
-public class StartGame extends AppCompatActivity {
+public class Game extends AppCompatActivity {
     final Random random = new Random();
 
     Button plus_but_1;
@@ -91,7 +90,7 @@ public class StartGame extends AppCompatActivity {
             plus_but_2.setEnabled(false);
             plus_but_3.setEnabled(false);
             plus_but_4.setEnabled(false);
-            waitTaimer.start();
+            timer.start();
         }
     };
 
@@ -141,10 +140,6 @@ public class StartGame extends AppCompatActivity {
 
     private void win_1() {
         if ((res_1 == res_2) && (res_3 == res_4) && (res_1 == res_3)) {
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            long milliseconds = 500;
-            //v.vibrate(milliseconds);
-
             setScore();
             roundTimer.cancel();
             Intent level_intent = new Intent(this, LevelInfo.class);
@@ -192,12 +187,10 @@ public class StartGame extends AppCompatActivity {
     }
 
     private boolean win() {
-        if ((res_1 == res_2) && (res_3 == res_4) && (res_1 == res_3) && (res_1 != 0)) {
-            return true;
-        } else return false;
+        return (res_1 == res_2) && (res_3 == res_4) && (res_1 == res_3) && (res_1 != 0);
     }
 
-    CountDownTimer waitTaimer = new CountDownTimer(2000, 1000) {
+    CountDownTimer timer = new CountDownTimer(2000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
 

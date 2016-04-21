@@ -13,6 +13,7 @@ public class Menu extends AppCompatActivity {
         GameInfo.setLevel(1);
         GameInfo.setLevelTime(33000);
         setContentView(R.layout.activity_menu);
+
     }
 
 
