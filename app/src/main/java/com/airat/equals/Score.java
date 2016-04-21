@@ -23,8 +23,8 @@ public class Score extends AppCompatActivity {
     public void loadText() {
         GameInfo.sPref = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
         savedText = GameInfo.sPref.getString(GameInfo.SAVED_TEXT, "");
-        str = getString(R.string.uRec);
-        scoreText.setText(str + " " + savedText);
+        str = getString(R.string.uRec) + " " + savedText;
+        scoreText.setText(str);
     }
     public void goMenuClick(View view) {
         Intent menu_intent = new Intent(this, Menu.class);

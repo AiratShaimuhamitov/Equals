@@ -38,14 +38,15 @@ public class LevelInfo extends AppCompatActivity {
         }
         int t = Integer.parseInt(GameInfo.sPref.getString(GameInfo.SAVED_TEXT, ""));
         if (GameInfo.getLevel() > t) {
-            saveText(t);
+            saveText();
         }
     }
 
-    public void saveText(int level) {
+    public void saveText() {
         GameInfo.sPref = this.getSharedPreferences("Score",Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = GameInfo.sPref.edit();
-        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(level - 1));
+        int k = GameInfo.getLevel() - 1;
+        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(k));
         ed.apply();
     }
 

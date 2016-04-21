@@ -1,6 +1,7 @@
 package com.airat.equals;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 public class GameInfo {
@@ -35,4 +36,29 @@ public class GameInfo {
         }
         return levelTime;
     }
+
+    /*public static void setScore() {
+        sPref = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
+        boolean hasVisited = sPref.getBoolean("hasVisited", false);
+
+        if (!hasVisited) {
+            // выводим нужную активность
+            SharedPreferences.Editor e = sPref.edit();
+            e.putBoolean("hasVisited", true);
+            e.putString(SAVED_TEXT, String.valueOf(0));
+            e.apply(); // не забудьте подтвердить изменения
+        }
+        int t = Integer.parseInt(sPref.getString(SAVED_TEXT, ""));
+        if (getLevel() > t) {
+            saveText(t);
+        }
+    }
+
+    public static void saveText(int level) {
+        sPref = this.getSharedPreferences("Score",Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(SAVED_TEXT, String.valueOf(level - 1));
+        ed.apply();
+    }*/
+
 }

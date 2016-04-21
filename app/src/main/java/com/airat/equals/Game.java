@@ -200,6 +200,7 @@ public class Game extends AppCompatActivity {
         startActivity(level_intent);
         overridePendingTransition(R.anim.right_out, R.anim.left_out);
     }
+
     private void setScore() {
         GameInfo.sPref = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
         int t = Integer.parseInt(GameInfo.sPref.getString(GameInfo.SAVED_TEXT, ""));
