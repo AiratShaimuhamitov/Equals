@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Score"
         android:textColor="@color/white"
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:onClick="scoreClick"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
         android:textColor="@color/white"
         android:id="@+id/StartGameBtn"
         android:onClick="Start"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/button1"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -35,7 +35,7 @@
         android:textColor="@color/white"
         android:onClick="aboutClick"
         android:id="@+id/button3"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true" />
 
     <TextView

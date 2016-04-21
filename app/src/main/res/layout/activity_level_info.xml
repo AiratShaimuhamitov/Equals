@@ -11,24 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textLevel"
-        android:text="@string/level"
         android:textSize="50sp"
         android:textColor="@color/txcolor"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="false"
         android:hint="600dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:textColor="@color/txcolor"
-        android:id="@+id/leveNumber"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textLevel"
-        android:layout_toEndOf="@+id/textLevel"
-        android:text="1"
-        android:layout_marginLeft="-15sp" />
 
 </RelativeLayout>

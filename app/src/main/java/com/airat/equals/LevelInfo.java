@@ -18,8 +18,9 @@ public class LevelInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_info);
-        textLevel = (TextView) findViewById(R.id.leveNumber);
-        textLevel.setText(String.valueOf(GameInfo.getLevel()));
+        textLevel = (TextView) findViewById(R.id.textLevel);
+        String levelInf = "Level " + String.valueOf(GameInfo.getLevel());
+        textLevel.setText(levelInf);
         levelTimer.start();
         setScore();
     }
@@ -37,15 +38,14 @@ public class LevelInfo extends AppCompatActivity {
         }
         int t = Integer.parseInt(GameInfo.sPref.getString(GameInfo.SAVED_TEXT, ""));
         if (GameInfo.getLevel() > t) {
-            saveText();
+            saveText(t);
         }
     }
 
-    public void saveText() {
+    public void saveText(int level) {
         GameInfo.sPref = this.getSharedPreferences("Score",Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = GameInfo.sPref.edit();
-        int k = GameInfo.getLevel() - 1;
-        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(k));
+        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(level - 1));
         ed.apply();
     }
 

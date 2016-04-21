@@ -12,32 +12,25 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
 public class Game extends AppCompatActivity {
     final Random random = new Random();
 
-    Button plus_but_1;
-    Button plus_but_2;
-    Button plus_but_3;
-    Button plus_but_4;
+    ArrayList<Button> foldButtons = new ArrayList<>();
+    ArrayList<TextView> resText = new ArrayList<>();
+
     Button newNumbersBtn;
     TextView timerText;
-    TextView res_text_1;
-    TextView res_text_2;
-    TextView res_text_3;
-    TextView res_text_4;
-    TextView win_text;
+
+    TextView winText;
+
     Animation bigger = null;
-    public int res_1 = 0;
-    public int res_2 = 0;
-    public int res_3 = 0;
-    public int res_4 = 0;
-    public int butt_1 = 0;
-    public int butt_2 = 0;
-    public int butt_3 = 0;
-    public int butt_4 = 0;
+    private int res[] = new int[4];
+    private int btnVal[] = new int[4];
+
     boolean win;
 
 
@@ -47,21 +40,25 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.activity_start_game);
 
         bigger = AnimationUtils.loadAnimation(this, R.anim.bigger);
-        plus_but_1 = (Button) findViewById(R.id.button);
-        plus_but_2 = (Button) findViewById(R.id.button2);
-        plus_but_3 = (Button) findViewById(R.id.button3);
-        plus_but_4 = (Button) findViewById(R.id.button4);
+        
+        foldButtons.add((Button) findViewById(R.id.button1));
+        foldButtons.add((Button) findViewById(R.id.button2));
+        foldButtons.add((Button) findViewById(R.id.button3));
+        foldButtons.add((Button) findViewById(R.id.button4));
+        
         newNumbersBtn = (Button) findViewById(R.id.start_butt);
-        res_text_1 = (TextView) findViewById(R.id.textView);
-        res_text_2 = (TextView) findViewById(R.id.textView2);
-        res_text_3 = (TextView) findViewById(R.id.textView3);
-        res_text_4 = (TextView) findViewById(R.id.textView4);
+        
+        resText.add( (TextView) findViewById(R.id.textView1));
+        resText.add( (TextView) findViewById(R.id.textView2));
+        resText.add( (TextView) findViewById(R.id.textView3));
+        resText.add( (TextView) findViewById(R.id.textView4));
+        
         timerText = (TextView) findViewById(R.id.timerText);
-        win_text = (TextView) findViewById(R.id.textView5);
+        winText = (TextView) findViewById(R.id.textView5);
 
         timerText.setTextColor(getResources().getColor(R.color.green));
         roundTimer.start();
-        new_game();
+        newGame();
     }
 
 
@@ -69,7 +66,8 @@ public class Game extends AppCompatActivity {
     CountDownTimer roundTimer = new CountDownTimer(GameInfo.nextLevelTime(), 1000) {
 
         public void onTick(long millisUntilFinished) {
-            timerText.setText("" + millisUntilFinished / 1000);
+            String timerStr = "" + millisUntilFinished / 1000;
+            timerText.setText(timerStr);
             if (millisUntilFinished < 20000)
                 timerText.setTextColor(getResources().getColor(R.color.yellow));
             if (millisUntilFinished < 10000)
@@ -79,115 +77,107 @@ public class Game extends AppCompatActivity {
         }
 
         public void onFinish() {
-            if (!win()) {
+            if (!equal()) {
                 win = false;
                 timerText.setText(null);
-                win_text.setText(R.string.lose);
-                win_text.setVisibility(View.VISIBLE);
+                winText.setText(R.string.lose);
+                winText.setVisibility(View.VISIBLE);
             }
             newNumbersBtn.setVisibility(View.INVISIBLE);
-            plus_but_1.setEnabled(false);
-            plus_but_2.setEnabled(false);
-            plus_but_3.setEnabled(false);
-            plus_but_4.setEnabled(false);
+            for(Button btn: foldButtons){
+                btn.setEnabled(false);
+            }
             timer.start();
         }
     };
 
-    public void new_values(View view) {
-        butt_1 = random.nextInt(9) + 1;
-        butt_2 = random.nextInt(9) + 1;
-        butt_3 = random.nextInt(9) + 1;
-        butt_4 = random.nextInt(9) + 1;
-        plus_but_1.setText(String.valueOf(butt_1));
-        plus_but_2.setText(String.valueOf(butt_2));
-        plus_but_3.setText(String.valueOf(butt_3));
-        plus_but_4.setText(String.valueOf(butt_4));
-    }
+    public void newValues(View view) {
+        for(int i = 0; i < 4; i++){
+            btnVal[i] = random.nextInt(9) + 1;
+        }
 
-    public void butt1_click(View view) {
-        res_1 += butt_1;
-        res_text_1.setText(String.valueOf(res_1));
-        butt_1 = random.nextInt(9) + 1;
-        plus_but_1.setText(String.valueOf(butt_1));
-        win_1();
-    }
-
-    public void butt2_click(View view) {
-        res_2 += butt_2;
-        res_text_2.setText(String.valueOf(res_2));
-        butt_2 = random.nextInt(9) + 1;
-        plus_but_2.setText(String.valueOf(butt_2));
-        win_1();
-
-    }
-
-    public void butt3_click(View view) {
-        res_3 += butt_3;
-        res_text_3.setText(String.valueOf(res_3));
-        butt_3 = random.nextInt(9) + 1;
-        plus_but_3.setText(String.valueOf(butt_3));
-        win_1();
-    }
-
-    public void butt4_click(View view) {
-        res_4 += butt_4;
-        res_text_4.setText(String.valueOf(res_4));
-        butt_4 = random.nextInt(9) + 1;
-        plus_but_4.setText(String.valueOf(butt_4));
-        win_1();
-    }
-
-    private void win_1() {
-        if ((res_1 == res_2) && (res_3 == res_4) && (res_1 == res_3)) {
-            setScore();
-            roundTimer.cancel();
-            Intent level_intent = new Intent(this, LevelInfo.class);
-            startActivity(level_intent);
-            this.finish();
-            overridePendingTransition(R.anim.right_out, R.anim.left_out);
-            timerText.setText(null);
-            win_text.setText(R.string.win);
-            win_text.setVisibility(View.VISIBLE);
-            newNumbersBtn.setVisibility(View.INVISIBLE);
-            plus_but_1.setEnabled(false);
-            plus_but_2.setEnabled(false);
-            plus_but_3.setEnabled(false);
-            plus_but_4.setEnabled(false);
-            plus_but_1.setText(R.string.win_2);
-            plus_but_2.setText(R.string.win_2);
-            plus_but_3.setText(R.string.win_2);
-            plus_but_4.setText(R.string.win_2);
+        for(Button btn: foldButtons){
+            btn.setText(String.valueOf(btnVal[foldButtons.indexOf(btn)])); // если не будет работать заменить через обычный for
         }
     }
 
-    private void new_game() {
-        win_text.setVisibility(View.INVISIBLE);
-        newNumbersBtn.setVisibility(View.VISIBLE);
-        plus_but_1.setEnabled(true);
-        plus_but_2.setEnabled(true);
-        plus_but_3.setEnabled(true);
-        plus_but_4.setEnabled(true);
-        butt_1 = random.nextInt(9) + 1;
-        butt_2 = random.nextInt(9) + 1;
-        butt_3 = random.nextInt(9) + 1;
-        butt_4 = random.nextInt(9) + 1;
-        plus_but_1.setText(String.valueOf(butt_1));
-        plus_but_2.setText(String.valueOf(butt_2));
-        plus_but_3.setText(String.valueOf(butt_3));
-        plus_but_4.setText(String.valueOf(butt_4));
-        res_1 = random.nextInt(9);
-        res_2 = random.nextInt(9);
-        res_3 = random.nextInt(9);
-        res_4 = random.nextInt(9);
-        res_text_1.setText(String.valueOf(res_1));
-        res_text_2.setText(String.valueOf(res_2));
-        res_text_3.setText(String.valueOf(res_3));
-        res_text_4.setText(String.valueOf(res_4));
+    private void addValue(int index){
+        res[index] += btnVal[index];
+        resText.get(index).setText(String.valueOf(res[index]));
+        btnVal[index] = random.nextInt(9) + 1;
+        foldButtons.get(index).setText(String.valueOf(btnVal[index]));
+        win_1();
     }
 
-    private boolean win() {
-        return (res_1 == res_2) && (res_3 == res_4) && (res_1 == res_3) && (res_1 != 0);
+    public void btn1Click(View view) {
+        addValue(0);
+    }
+
+    public void btn2Click(View view) {
+        addValue(1);
+    }
+
+    public void btn3Click(View view) {
+        addValue(2);
+    }
+
+    public void btn4Click(View view) {
+        addValue(3);
+    }
+
+    private boolean equal(){
+        for(int i = 0; i < 3; i++){
+            if((res[i] != res[i + 1]) && res[i] != 0)
+                return false;
+        }
+        return true;
+    }
+
+    private void win_1() {
+        if (equal()) {
+            setScore();
+            roundTimer.cancel();
+            Intent intent = new Intent(this, LevelInfo.class);
+            startActivity(intent);
+            this.finish();
+            overridePendingTransition(R.anim.right_out, R.anim.left_out);
+            timerText.setText(null);
+            winText.setText(R.string.win);
+            winText.setVisibility(View.VISIBLE);
+            newNumbersBtn.setVisibility(View.INVISIBLE);
+            for(Button btn: foldButtons){
+                btn.setEnabled(false);
+            }
+        }
+    }
+
+    private void newGame() {
+        winText.setVisibility(View.INVISIBLE);
+        newNumbersBtn.setVisibility(View.VISIBLE);
+
+        for(Button btn: foldButtons){
+            btn.setEnabled(true);
+        }
+
+        for(int i = 0; i < 4; i++){
+            btnVal[i] = random.nextInt(9) + 1;
+        }
+
+        for(int i = 0; i < 4; i++){
+            foldButtons.get(i).setText(String.valueOf(btnVal[i]));
+        }
+
+        for(int i = 0; i < 4; i++){
+            foldButtons.get(i).setText(String.valueOf(btnVal[i]));
+        }
+
+        for(int i = 0; i < 4; i++){
+            res[i] = random.nextInt(9) + 1;
+        }
+
+        for(TextView textView: resText){
+            textView.setText(String.valueOf(res[resText.indexOf(textView)]));
+        }
     }
 
     CountDownTimer timer = new CountDownTimer(2000, 1000) {
@@ -199,12 +189,12 @@ public class Game extends AppCompatActivity {
         @Override
         public void onFinish() {
             if (win)
-                NextLevel_1();
+                NextLevel();
             else goMenu();
         }
     };
 
-    private void NextLevel_1() {
+    private void NextLevel() {
         this.finish();
         Intent level_intent = new Intent(this, LevelInfo.class);
         startActivity(level_intent);

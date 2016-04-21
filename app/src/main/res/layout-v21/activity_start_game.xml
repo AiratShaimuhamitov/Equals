@@ -43,7 +43,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_centerHorizontal="true" />
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textView1"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/imageView4"
@@ -224,7 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:enabled="true"
-                    android:onClick="new_values"
+                    android:onClick="newValues"
                     android:text="@string/start"
                     android:visibility="invisible"
                     android:layout_gravity="center_horizontal"
@@ -270,12 +270,12 @@
             <Button
 
                 android:textColor="@color/white"
-                android:id="@+id/button"
+                android:id="@+id/button1"
                 android:textSize="20sp"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:onClick="butt1_click"
+                android:onClick="btn1Click"
                 android:layout_marginRight="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_gravity="center_horizontal" />
@@ -296,7 +296,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:onClick="butt2_click"
+                android:onClick="btn2Click"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
                 android:layout_gravity="center_horizontal" />
@@ -317,7 +317,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:onClick="butt3_click"
+                android:onClick="btn3Click"
                 android:layout_marginRight="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_gravity="center_horizontal" />
@@ -338,7 +338,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:onClick="butt4_click"
+                android:onClick="btn4Click"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
                 android:layout_gravity="center_horizontal" />
