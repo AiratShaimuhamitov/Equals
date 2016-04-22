@@ -22,7 +22,7 @@ public class Splash extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 3 * 1000);
+        }, 3 * 1000);  // время сплэш активити
 
     }
 }

@@ -22,32 +22,8 @@ public class LevelInfo extends AppCompatActivity {
         String levelInf = "Level " + String.valueOf(GameInfo.getLevel());
         textLevel.setText(levelInf);
         levelTimer.start();
-        setScore();
-    }
-
-    void setScore() {
-        GameInfo.sPref = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
-        boolean hasVisited = GameInfo.sPref.getBoolean("hasVisited", false);
-
-        if (!hasVisited) {
-            // выводим нужную активность
-            SharedPreferences.Editor e = GameInfo.sPref.edit();
-            e.putBoolean("hasVisited", true);
-            e.putString(GameInfo.SAVED_TEXT, String.valueOf(0));
-            e.apply(); // не забудьте подтвердить изменения
-        }
-        int t = Integer.parseInt(GameInfo.sPref.getString(GameInfo.SAVED_TEXT, ""));
-        if (GameInfo.getLevel() > t) {
-            saveText();
-        }
-    }
-
-    public void saveText() {
-        GameInfo.sPref = this.getSharedPreferences("Score",Context.MODE_PRIVATE);
-        SharedPreferences.Editor ed = GameInfo.sPref.edit();
-        int k = GameInfo.getLevel() - 1;
-        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(k));
-        ed.apply();
+        Context context = this;
+        GameInfo.setScore(context);
     }
 
     CountDownTimer levelTimer = new CountDownTimer(2000, 1000) {

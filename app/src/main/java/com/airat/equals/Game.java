@@ -31,8 +31,6 @@ public class Game extends AppCompatActivity {
     private int res[] = new int[4];
     private int btnVal[] = new int[4];
 
-    boolean win;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +54,7 @@ public class Game extends AppCompatActivity {
         timerText = (TextView) findViewById(R.id.timerText);
         winText = (TextView) findViewById(R.id.textView5);
 
-        timerText.setTextColor(getResources().getColor(R.color.green));
+        timerText.setTextColor(getResources().getColor(R.color.blue));
         roundTimer.start();
         newGame();
     }
@@ -69,7 +67,7 @@ public class Game extends AppCompatActivity {
             String timerStr = "" + millisUntilFinished / 1000;
             timerText.setText(timerStr);
             if (millisUntilFinished < 20000)
-                timerText.setTextColor(getResources().getColor(R.color.yellow));
+                timerText.setTextColor(getResources().getColor(R.color.blue));
             if (millisUntilFinished < 10000)
                 timerText.setTextColor(getResources().getColor(R.color.red));
             if (millisUntilFinished < 6000)
@@ -77,8 +75,7 @@ public class Game extends AppCompatActivity {
         }
 
         public void onFinish() {
-            if (!equal()) {
-                win = false;
+            if (!isEqual()) {
                 timerText.setText(null);
                 winText.setText(R.string.lose);
                 winText.setVisibility(View.VISIBLE);
@@ -125,7 +122,7 @@ public class Game extends AppCompatActivity {
         addValue(3);
     }
 
-    private boolean equal(){
+    private boolean isEqual(){
         for(int i = 0; i < 3; i++){
             if((res[i] != res[i + 1]) && res[i] != 0)
                 return false;
@@ -134,8 +131,9 @@ public class Game extends AppCompatActivity {
     }
 
     private void win_1() {
-        if (equal()) {
-            setScore();
+        if (isEqual()) {
+            Context context = this;
+            GameInfo.setScore(context);
             roundTimer.cancel();
             Intent intent = new Intent(this, LevelInfo.class);
             startActivity(intent);
@@ -168,10 +166,6 @@ public class Game extends AppCompatActivity {
         }
 
         for(int i = 0; i < 4; i++){
-            foldButtons.get(i).setText(String.valueOf(btnVal[i]));
-        }
-
-        for(int i = 0; i < 4; i++){
             res[i] = random.nextInt(9) + 1;
         }
 
@@ -188,7 +182,7 @@ public class Game extends AppCompatActivity {
 
         @Override
         public void onFinish() {
-            if (win)
+            if (isEqual())
                 NextLevel();
             else goMenu();
         }
@@ -200,22 +194,6 @@ public class Game extends AppCompatActivity {
         startActivity(level_intent);
         overridePendingTransition(R.anim.right_out, R.anim.left_out);
     }
-
-    private void setScore() {
-        GameInfo.sPref = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
-        int t = Integer.parseInt(GameInfo.sPref.getString(GameInfo.SAVED_TEXT, ""));
-        if (GameInfo.getLevel() > t) {
-            saveText();
-        }
-    }
-
-    private void saveText() {
-        GameInfo.sPref = this.getSharedPreferences("Score",Context.MODE_PRIVATE);
-        SharedPreferences.Editor ed = GameInfo.sPref.edit();
-        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(GameInfo.getLevel()));
-        ed.apply();
-    }
-
     private void goMenu() {
         this.finish();
         Intent menu_intent = new Intent(this, Menu.class);

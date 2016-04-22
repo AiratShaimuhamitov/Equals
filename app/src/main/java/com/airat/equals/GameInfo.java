@@ -37,28 +37,28 @@ public class GameInfo {
         return levelTime;
     }
 
-    /*public static void setScore() {
-        sPref = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
+    public static void setScore(Context context) {
+        sPref = context.getSharedPreferences("Score", Context.MODE_PRIVATE);
         boolean hasVisited = sPref.getBoolean("hasVisited", false);
 
         if (!hasVisited) {
-            // выводим нужную активность
             SharedPreferences.Editor e = sPref.edit();
             e.putBoolean("hasVisited", true);
             e.putString(SAVED_TEXT, String.valueOf(0));
-            e.apply(); // не забудьте подтвердить изменения
+            e.apply();
         }
         int t = Integer.parseInt(sPref.getString(SAVED_TEXT, ""));
         if (getLevel() > t) {
-            saveText(t);
+            saveText(context);
         }
     }
 
-    public static void saveText(int level) {
-        sPref = this.getSharedPreferences("Score",Context.MODE_PRIVATE);
-        SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(SAVED_TEXT, String.valueOf(level - 1));
+    public static void saveText(Context context) {
+        sPref = context.getSharedPreferences("Score",Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = GameInfo.sPref.edit();
+        int k = GameInfo.getLevel() - 1;
+        ed.putString(GameInfo.SAVED_TEXT, String.valueOf(k));
         ed.apply();
-    }*/
+    }
 
 }
