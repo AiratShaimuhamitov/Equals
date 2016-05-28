@@ -13,7 +13,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/DeveloperContacts"
         android:id="@+id/textView7"
-        android:textColor="@color/txcolor"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

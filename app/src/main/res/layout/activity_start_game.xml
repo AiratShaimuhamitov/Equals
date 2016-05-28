@@ -43,15 +43,13 @@
                     android:id="@+id/textView1"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageView4"
-                    android:layout_alignStart="@+id/imageView4"
-                    android:layout_alignTop="@+id/imageView4"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="11dp"
                     android:text="@string/zero_text"
                     android:textColor="@color/white"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
 
@@ -81,15 +79,13 @@
                     android:id="@+id/textView2"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageView3"
-                    android:layout_alignStart="@+id/imageView3"
-                    android:layout_alignTop="@+id/imageView3"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="11dp"
                     android:text="@string/zero_text"
                     android:textColor="@color/white"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
 
 
             </RelativeLayout>
@@ -121,15 +117,13 @@
                     android:id="@+id/textView3"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageView2"
-                    android:layout_alignStart="@+id/imageView2"
-                    android:layout_alignTop="@+id/imageView2"
-                    android:layout_marginTop="11dp"
                     android:text="@string/zero_text"
                     android:textColor="@color/white"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="center"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -158,15 +152,13 @@
                     android:id="@+id/textView4"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/imageView"
-                    android:layout_alignStart="@+id/imageView"
-                    android:layout_alignTop="@+id/imageView"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="11dp"
                     android:text="@string/zero_text"
                     android:textColor="@color/white"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -241,7 +233,7 @@
                     android:text="@string/win"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:visibility="invisible"
-                    android:textColor="@color/txcolor"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="50sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_centerHorizontal="true" />
@@ -267,7 +259,7 @@
             <Button
 
                 android:textColor="@color/white"
-                android:id="@+id/button1"
+                android:id="@+id/btn_score"
                 android:textSize="20sp"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -309,7 +301,7 @@
             <Button
 
                 android:textColor="@color/white"
-                android:id="@+id/button3"
+                android:id="@+id/btn_about"
                 android:textSize="20sp"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textLevel"
         android:textSize="50sp"
-        android:textColor="@color/txcolor"
+        android:textColor="@color/colorPrimary"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="false"

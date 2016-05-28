@@ -269,7 +269,7 @@
             <Button
 
                 android:textColor="@color/white"
-                android:id="@+id/button1"
+                android:id="@+id/btn_score"
                 android:textSize="20sp"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -311,7 +311,7 @@
             <Button
 
                 android:textColor="@color/white"
-                android:id="@+id/button3"
+                android:id="@+id/btn_about"
                 android:textSize="20sp"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"

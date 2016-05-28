@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Score"
         android:textColor="@color/white"
-        android:id="@+id/button1"
+        android:id="@+id/btn_score"
         android:onClick="scoreClick"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:text="Start"
         android:textColor="@color/white"
-        android:id="@+id/StartGameBtn"
+        android:id="@+id/btn_start"
         android:onClick="Start"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/btn_score"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -34,8 +34,8 @@
         android:text="About"
         android:textColor="@color/white"
         android:onClick="aboutClick"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button1"
+        android:id="@+id/btn_about"
+        android:layout_below="@+id/btn_score"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/Equal"
         android:textSize="50sp"
-        android:textColor="@color/txcolor"
+        android:textColor="@color/colorPrimary"
         android:layout_marginTop="30sp"
         android:id="@+id/textView6"
         android:layout_alignParentTop="true"

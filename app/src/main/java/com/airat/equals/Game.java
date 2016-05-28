@@ -2,7 +2,6 @@ package com.airat.equals;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,9 +38,9 @@ public class Game extends AppCompatActivity {
 
         bigger = AnimationUtils.loadAnimation(this, R.anim.bigger);
         
-        foldButtons.add((Button) findViewById(R.id.button1));
+        foldButtons.add((Button) findViewById(R.id.btn_score));
         foldButtons.add((Button) findViewById(R.id.button2));
-        foldButtons.add((Button) findViewById(R.id.button3));
+        foldButtons.add((Button) findViewById(R.id.btn_about));
         foldButtons.add((Button) findViewById(R.id.button4));
         
         newNumbersBtn = (Button) findViewById(R.id.start_butt);
@@ -160,7 +159,6 @@ public class Game extends AppCompatActivity {
         for(int i = 0; i < 4; i++){
             btnVal[i] = random.nextInt(9) + 1;
         }
-
         for(int i = 0; i < 4; i++){
             foldButtons.get(i).setText(String.valueOf(btnVal[i]));
         }

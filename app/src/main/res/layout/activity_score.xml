@@ -34,7 +34,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/uRec"
                 android:textSize="45sp"
-                android:textColor="@color/txcolor"
+                android:textColor="@color/colorPrimary"
                 android:id="@+id/YouScore"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
